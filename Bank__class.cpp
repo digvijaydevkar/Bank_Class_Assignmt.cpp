@@ -12,10 +12,10 @@ class BankAccount{
     public:
        BankAccount(){
         //Default constructer
-         accountHolder='\0';
-         accountNo=00;
-         accountType='\0';
-         balance=0.0;
+        accountHolder="Mahesh";
+        accountNo=12343256;
+        accountType="Savings";
+        balance=50000;
        }
        
        BankAccount(string hldr,int no,string type,double bal ){
@@ -29,11 +29,11 @@ class BankAccount{
        void setInfo(){
        	cout<<"\n Enter user's name";
        	cin>>accountHolder;
-       	cout<<"\n Enter account NO.";
+       	cout<<" Enter account NO.";
        	cin>>accountNo;
-       	cout<<"\n Enter account TYPE";
+       	cout<<" Enter account TYPE";
        	cin>>accountType;
-       	cout<<"\n enter account Balance";
+       	cout<<" Enter account Balance";
        	cin>>balance;
 	   }
 	   
@@ -55,13 +55,14 @@ class BankAccount{
        
        void setAccountType(string new_Type){
            accountType=new_Type;
+           cout<<"\n updated account to Current..."<<endl;
        }
        
        void deposite(double amount){
        	if(amount>0){
        	   balance+=amount;
-       	   cout<<"\n depositing........."<<endl;
-	   	   cout<<"Total Balance :"<<balance;
+       	   cout<<"\n\n depositing........."<<endl;
+	   	   cout<<"New Balance :"<<balance;
         }
        	else
        	    cout<<"\n amount should be in positive";
@@ -70,15 +71,15 @@ class BankAccount{
 	   void withdraw(double amount){
 	   	  if(amount<balance){
 	   	  	balance-=amount;
-	   	  	cout<<"\n witdrawing........."<<endl;
-	   	  	cout<<"Total Balance :"<<balance;
+	   	  	cout<<"\n\n witdrawing........."<<endl;
+	   	  	cout<<"New Balance :"<<balance;
 			}
 		  else
 		    cout<<"\n amount is greater than account balance";
 	   }
 	   
 	   void displayAllDetails(){
-	   	cout<<"\n ------- BANK HOLDER ALL DETAILS------- ";
+	   	cout<<"\n ------- FINAL ACCOUNT DETAILS ------- ";
 	   	cout <<"\n Account Holder's name is : "<<accountHolder;
 	   	cout <<"\n Account Holder's Account Number is : "<<accountNo;
 	   	cout <<"\n Account Holder's AccountType is : "<<accountType;
@@ -89,13 +90,18 @@ class BankAccount{
 int main()
 {
     BankAccount b1;
-    b1.setInfo();
-    cout<<"\n 1ST Account Holder's Balance is : "<<b1.getBalance();
-    b1.deposite(230000);
-//    
-//    BankAccount b2("SURESH",6544654,"savings",100000);
-//    cout<<"\n 2ND Account Holder's NAME  is : "<<b2.getHoldernm();
-//    b2.displayAllDetails();
+    cout<<"\nAccount Deatils :";
+    cout<<"\nAccount Holder's NAME is : "<<b1.getHoldernm();
+    cout<<"\nAccount Holder's Account No is : "<<b1.getAccountNo();
+    cout<<"\nAccount Holder's Account type is : "<<b1.getAccounttype();
+    cout<<"\nAccount Holder's Balance is : "<<b1.getBalance();
+    b1.deposite(20000);b1.withdraw(20000);b1.setAccountType("Current ");b1.displayAllDetails();
+    
+    //2nd bank account 
+    BankAccount b2("SURESH",6544654,"savings",100000);
+    cout<<"\n\n 2ND Account Holder : ";
+    b2.displayAllDetails();
+    return 0;
     
 }
 
